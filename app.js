@@ -14,8 +14,6 @@ const app = express()
 
 // function to check if the user is logged in or not
 const loggedIn = (req, res, next) => {
-  console.log(req.sessionStore)
-
   if (req.session.user || req.url === '/login')
     return next()
 
