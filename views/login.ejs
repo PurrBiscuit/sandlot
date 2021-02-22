@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Express - Login</title>
+    <link rel='stylesheet' href='/stylesheets/login.css' />
+  </head>
+  <body>
+    <div id="login-container">
+      <h1>Please login</h1>
+      <form novalidate>
+        <div id="username">
+          <label for="username">Username:</label>
+          <input id="username" type="text" name="username">
+        </div>
+        <div id="password">
+          <label for="password">Password:</label>
+          <input id="password" type="password" name="password">
+        </div>
+        <button id="login">Login</button>
+        <div>
+          <p id="error"></p>
+        </div>
+      </form>
+    </div>
+
+    <script src="/javascripts/login.js"></script>
+  </body>
+</html>

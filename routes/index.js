@@ -1,11 +1,14 @@
 const express = require('express')
-const { route } = require('./users')
-const createError = require('http-errors')
 const router = express.Router()
 
 /* GET home page. */
 router.get('/', (req, res) => {
-  res.render('index', { title: 'Express' })
+  const { username } = req.session.user
+
+  res.render('index', {
+    title: 'Express',
+    username
+  })
 })
 
 module.exports = router
