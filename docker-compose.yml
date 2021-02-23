@@ -2,6 +2,8 @@ version: '2'
 services:
   app:
     build: .
+    depends_on:
+      - redis
     env_file:
       - .env
     ports:
@@ -10,3 +12,8 @@ services:
       - '.:/service'
       - '/service/node_modules'
     command: yarn start:dev
+
+  redis:
+    image: redis
+    expose:
+      - "6379"
