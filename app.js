@@ -1,9 +1,11 @@
-const createError = require('http-errors')
+const cookieParser = require('cookie-parser')
 const express = require('express')
 const session = require('express-session')
-const path = require('path')
-const cookieParser = require('cookie-parser')
+const RedisStore = require('connect-redis')(session)
+const createError = require('http-errors')
 const logger = require('morgan')
+const path = require('path')
+const redis = require('redis')
 
 const indexRouter = require('./routes/index')
 const loginRouter = require('./routes/login')
@@ -11,6 +13,8 @@ const logoutRouter = require('./routes/logout')
 const usersRouter = require('./routes/users')
 
 const app = express()
+
+const redisClient = redis.createClient(process.env.REDIS_URL)
 
 // function to check if the user is logged in or not
 const loggedIn = (req, res, next) => {
@@ -33,8 +37,11 @@ app.use(express.static(path.join(__dirname, 'public')))
 // express-session session middleware here; this checks for a
 // session cookie and adds a session attribute to the request object
 app.use(session({
-  secret: 'veryimportantsecret',
-  name: process.env.COOKIE_NAME
+  name: process.env.COOKIE_NAME,
+  resave: false,
+  saveUninitialized: false,
+  secret: process.env.SESSION_SECRET,
+  store: new RedisStore({ client: redisClient })
 }))
 
 // middleware to check user's logged in status based on their session
