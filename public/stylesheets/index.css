@@ -1,0 +1,44 @@
+button.hide {
+  display: none;
+}
+
+button.session {
+  width: 180px;
+}
+
+div.session-container {
+  margin-top: 30px;
+}
+
+div.session-info {
+  border-style: double;
+  margin: 0px auto 20px;
+  width: 80%;
+}
+
+h1.session-header {
+  margin-top: 0px;
+}
+
+img.sandlot {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+p.error {
+  color: red;
+  font-size: 18px;
+}
+
+pre.session-info {
+  font-size: 22px;
+  margin: 40px auto;
+  text-align: left;
+  width: min-content;
+}
+
+.main-container {
+  padding: 0px 100px;
+  margin-top: 30px;
+  text-align: center;
+}

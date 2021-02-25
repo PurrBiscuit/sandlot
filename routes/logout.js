@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
     })
 
   res.clearCookie(process.env.COOKIE_NAME)
-  res.writeHead(302, { Location: '/login' }).end()
+  res.writeHead(302, { Location: '/' }).end()
 })
 
 module.exports = router;

@@ -27,7 +27,7 @@ usernameInput.addEventListener('input', () =>
 loginButton.addEventListener('click', e => {
   e.preventDefault()
 
-  fetch('/login', {
+  fetch('/api/login', {
     body: JSON.stringify({
       password: passwordInput.value,
       username: usernameInput.value
@@ -40,16 +40,14 @@ loginButton.addEventListener('click', e => {
   })
   .then(res => {
     if (res.status === 401)
-      throw res
+      return setErrorMessage("Incorrect username or password.")
 
     return res.json()
   })
-  .then(({ redirectUrl }) => {
-    if (redirectUrl)
-      return window.location.href = redirectUrl
-  })
-  .catch(err => {
-    const errMsg = err.status === 401 ? "Incorrect username or password." : "Unknown error occurred."
-    setErrorMessage(errMsg)
-  })
+  .then(({ redirectUrl }) =>
+      window.location.href = redirectUrl
+  )
+  .catch(err =>
+    setErrorMessage("Unknown error occurred.")
+  )
 })

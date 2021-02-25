@@ -7,6 +7,7 @@ const logger = require('morgan')
 const path = require('path')
 const redis = require('redis')
 
+const apiRouter = require('./routes/api/index')
 const indexRouter = require('./routes/index')
 const loginRouter = require('./routes/login')
 const logoutRouter = require('./routes/logout')
@@ -18,10 +19,10 @@ const redisClient = redis.createClient(process.env.REDIS_URL)
 
 // function to check if the user is logged in or not
 const loggedIn = (req, res, next) => {
-  if (req.session.user || req.url === '/login')
+  if (req.session.user || req.url === '/login' || req.url === '/' || req.url === '/api/login')
     return next()
 
-  res.writeHead(302, { Location: '/login' }).end()
+  res.writeHead(302, { Location: '/' }).end()
 }
 
 // view engine setup
@@ -47,10 +48,11 @@ app.use(session({
 // middleware to check user's logged in status based on their session
 app.use(loggedIn)
 
-app.use('/', indexRouter)
+app.use('/api', apiRouter)
 app.use('/login', loginRouter)
 app.use('/logout', logoutRouter)
 app.use('/users', usersRouter)
+app.use('/', indexRouter)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

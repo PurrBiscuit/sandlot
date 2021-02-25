@@ -2,15 +2,17 @@
 <html>
   <head>
     <title>Express - Login</title>
+    <link rel='stylesheet' href='/stylesheets/global.css' />
     <link rel='stylesheet' href='/stylesheets/login.css' />
   </head>
   <body>
+    <%- include('partials/navbar', { username: undefined, title }) %>
     <div id="login-container">
       <h1>Please login</h1>
       <form novalidate>
         <div id="username">
           <label for="username">Username:</label>
-          <input id="username" type="text" name="username">
+          <input id="username" type="text" name="username" autofocus>
         </div>
         <div id="password">
           <label for="password">Password:</label>

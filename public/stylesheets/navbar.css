@@ -1,0 +1,32 @@
+button.signup {
+  margin-right: 15px;
+}
+
+div.button-container {
+  display: flex;
+  align-content: center;
+}
+
+div.navbar {
+  align-items: center;
+  display: flex;
+  height: 70px;
+  justify-content: space-between;
+  background-color: rgb(80, 27, 27);
+  margin-top: 0px;
+}
+
+h1.title {
+  color: white;
+  margin-left: 20px;
+}
+
+li.navbar {
+  list-style-type: none;
+}
+
+ul.navbar {
+  margin: 0px;
+  padding-right: 50px;
+  padding-left: 0px;
+}

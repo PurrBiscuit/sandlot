@@ -2,10 +2,24 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/global.css' />
+    <link rel='stylesheet' href='/stylesheets/index.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %>, <%= username %>!</p>
+    <%- include('partials/navbar', { username, title }) %>
+    <div class="main-container">
+      <% if (username) { %>
+        <h1>Welcome to <%= title %>, <%= username %>!</h1>
+        <div class="session-container">
+          <button class="session">Display Session</button>
+        </div>
+      <% } else { %>
+        <h1 class="description">A little Express service for experimenting with new stuff.</h1>
+        <h3>Sign-up or login to play ball.</h3>
+        <img class="sandlot" src="/images/sandlot.jpg" />
+      <% } %>
+    </div>
+    <script src="/javascripts/utils.js"></script>
+    <script src="/javascripts/index.js"></script>
   </body>
 </html>

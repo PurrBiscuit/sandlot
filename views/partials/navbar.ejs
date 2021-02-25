@@ -1,0 +1,27 @@
+<link href="/stylesheets/navbar.css" rel="stylesheet" type="text/css">
+
+<div class="navbar">
+  <h1 class="title"><%= title %></h1>
+  <ul class="navbar">
+    <div class="button-container">
+      <li class="navbar">
+        <% if (!username) { %>
+          <button class="navbar signup">
+            Sign-up
+          </button>
+        <% } %>
+      </li>
+      <li class="navbar">
+        <button class="navbar auth <%= username ? 'logout' : 'login' %>">
+        <% if (username) { %>
+          Log Out
+        <% } else { %>
+          Log In
+        <% } %>
+        </button>
+      </li>
+    </div>
+  </ul>
+</div>
+
+<script src="/javascripts/navbar.js"></script>
