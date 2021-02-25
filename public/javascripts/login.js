@@ -38,16 +38,17 @@ loginButton.addEventListener('click', e => {
     method: 'POST',
     redirect: 'manual'
   })
-  .then(res => {
-    if (res.status === 401)
-      return setErrorMessage("Incorrect username or password.")
+    .then(res => {
+      if (res.status === 401)
+        return setErrorMessage('Incorrect username or password.')
 
-    return res.json()
-  })
-  .then(({ redirectUrl }) =>
+      return res.json()
+    })
+    .then(({ redirectUrl }) =>
       window.location.href = redirectUrl
-  )
-  .catch(err =>
-    setErrorMessage("Unknown error occurred.")
-  )
+    )
+    .catch(err => {
+      setErrorMessage('Unknown error occurred.')
+      console.log(err)
+    })
 })

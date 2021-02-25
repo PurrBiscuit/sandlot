@@ -15,4 +15,4 @@ router.get('/', (req, res) => {
   res.writeHead(302, { Location: '/' }).end()
 })
 
-module.exports = router;
+module.exports = router

@@ -13,4 +13,4 @@ router.get('/me', (req, res) => {
   }, throttle)
 })
 
-module.exports = router;
+module.exports = router
