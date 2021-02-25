@@ -1,0 +1,24 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
+  "rules": {
+    "arrow-parens": ["error", "as-needed"],
+    "brace-style": "error",
+    "linebreak-style": ["error", "unix"],
+    "indent": ["error", 2],
+    "no-console": "off",
+    "no-trailing-spaces": "error",
+    "no-var": "error",
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "semi": ["error", "never"]
+  }
+}
