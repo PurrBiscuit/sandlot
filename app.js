@@ -25,6 +25,18 @@ const loggedIn = (req, res, next) => {
   res.writeHead(302, { Location: '/' }).end()
 }
 
+// random middleware that takes config options
+// and returns the middleware function
+const optionsMiddleware = options =>
+  (req, res, next) => {
+    console.log(`The message option is set to: ${options.message}`)
+
+    next()
+  }
+
+// store the actual middleware function for use later on indexRouter
+const optsMiddle = optionsMiddleware({ message: 'Have a great day!' })
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
@@ -52,7 +64,7 @@ app.use('/api', apiRouter)
 app.use('/login', loginRouter)
 app.use('/logout', logoutRouter)
 app.use('/users', usersRouter)
-app.use('/', indexRouter)
+app.use('/', optsMiddle, indexRouter)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
